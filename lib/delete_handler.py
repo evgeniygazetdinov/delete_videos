@@ -20,11 +20,10 @@ def delete_handler(files, limit,middle_file,ratio,free_space = 0,):
     print(free_space)
     print(middle_file)
     print('files need deleted '+str(quantity_for_delete))
-    delete_paths = []
     try:
         for i in range(quantity_for_delete):
+            #delete_file(files[i])
             print(str(files[i]) + ' file will be deleted')
-            #delete_file(delete_paths[i])
-        print(str(len(quantity_for_delete))+'will deleted')
     except:
+        print(str(quantity_for_delete)+'will deleted')
         pass
