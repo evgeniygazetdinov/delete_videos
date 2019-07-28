@@ -1,6 +1,6 @@
 import os
 import datetime
-from file_size import return_name,create_name_path,find_files_older
+from file_size import return_name,create_name_path,find_files_older,return_name,convert_name_to_datetime
 
 
 def day_limit():
@@ -10,6 +10,20 @@ def day_limit():
     delay = limit.replace(second = 0,microsecond=0)
     return delay
 
+
+def create_pairs(file):
+    name = return_name(file)
+    date_create = convert_name_to_datetime(name)
+    name_path = create_name_path(date_create,file)
+    return name_path
+
+
+
+
+def sort_pairs_by_date(pairs):
+    pairs_for_sort = pairs
+    data_sorted = sorted(pairs_for_sort, key=lambda item: item.keys()[-1])
+    return data_sorted
 
 
 
