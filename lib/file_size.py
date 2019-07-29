@@ -35,7 +35,6 @@ def convert_name_to_datetime(name):
                 dt = datetime.datetime(int(w_ext[3]),int(w_ext[2]),int(w_ext[1]))
                 tm = datetime.time(int(w_ext[6]),int(w_ext[7]),int(w_ext[8]))
                 time_creation = dt.combine(dt, tm)
-                print(time_creation)
                 return time_creation
 
 
