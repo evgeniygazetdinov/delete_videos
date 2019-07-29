@@ -21,7 +21,7 @@ def create_name_path(name, path):
 def find_files_older(name_path,time_limit):
       for name, path in name_path.items():
           time_creation = convert_name_to_datetime(name)
-          if time_creation <= time_limit:
+          if time_creation >= time_limit:
               return path
           else:
               continue
