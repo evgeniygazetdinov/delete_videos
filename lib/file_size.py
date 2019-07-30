@@ -34,16 +34,16 @@ def convert_name_to_datetime(name):
                 tm = datetime.time(int(w_ext[6]),int(w_ext[7]),int(w_ext[8]))
                 time_creation = dt.combine(dt, tm)
                 return time_creation
+        
 
-
-def find_weight(path_to_file):
+def find_weight(path_to_file): 
   if path_to_file is not None:
       statinfo = os.stat(path_to_file)
       size = statinfo.st_size
       return size
+    
 
-
-
+    
 def find_size(filename):
   time_limit = create_limit()
   name = return_name(filename)
