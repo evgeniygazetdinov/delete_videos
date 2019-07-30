@@ -17,19 +17,21 @@ def delete_handler(files, limit,middle_file,ratio,free_space = 1,):
     # count how many files need deleted
     counter = 0
     free_space = find_free_space()
-    print(str(len(files))+'files for delete')
-    print(free_space)
     delete_paths = []
     for i in files:
         for key, value in i.items():
             delete_paths.append(value)
+    print(str(len(files))+' files for delete')
+    free_space = find_free_space()
     try:
-        while free_space< limit:
+       while free_space< limit:
+            if free_space>= limit:
+                print("you have enough space "+ str(free_space/ratio)+'gb')
             free_space = find_free_space()
-            #delete_file(files[counter])
-            print(counter)
-            counter+1
-            print(str(delete_paths[counter])+ ' file will be deleted')
+            delete_file(delete_paths[counter])
+            counter+=1
+            print(delete_paths[counter])
     except:
-         print('files'+str(counter)+'deleted')
-         pass
+        print('*'*50)
+        print('files'+str(counter)+'deleted')
+        pass
