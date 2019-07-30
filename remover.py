@@ -3,7 +3,7 @@ from lib.search_videos import find_videos
 from lib.file_size import find_size
 from lib.older_by import find_older,sort_pairs_by_date,create_pairs
 from lib.delete_handler import find_free_space,delete_handler
-
+from collections import OrderedDict
 #_PATH = os.getcwd()
 _PATH = '/home/_VideoArchive'
 #bite
@@ -30,13 +30,14 @@ def main():
     older_files_by_date =filter(None, map(create_pairs,older_files))
     #create list with most older files
     files_for_delete = sort_pairs_by_date(older_files_by_date)
+    #print(list(older_files_by_date))
     free_space = find_free_space()
     print('free is' + str(free_space/ratio)+'gb')
     #default free_space is 0 for delete all
     #func take inside list with files
 
-    delete_handler(older_files_by_date,limit_for_delete,middle_file,ratio)
-        
+    delete_handler(files_for_delete,limit_for_delete,middle_file,ratio)
+            
 
 if __name__ == "__main__":
     main()
