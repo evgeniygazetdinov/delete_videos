@@ -1,9 +1,9 @@
 import os
-from lib.search_videos import find_videos
-from lib.file_size import find_size
-from lib.older_by import find_older,sort_pairs_by_date,create_pairs
-from lib.delete_handler import find_free_space,delete_handler
-from collections import OrderedDict
+from deleter.lib.search_videos import find_videos
+from deleter.lib.file_size import find_size
+from deleter.lib.older_by import find_older,sort_pairs_by_date,create_pairs
+from deleter.lib.delete_handler import find_free_space,delete_handler
+
 #_PATH = os.getcwd()
 _PATH = '/home/_VideoArchive'
 #bite
