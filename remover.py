@@ -1,11 +1,11 @@
 import os
-from lib.search_videos import find_videos
-from lib.file_size import find_size
-from lib.older_by import find_older,sort_pairs_by_date,create_pairs
-from lib.delete_handler import find_free_space,delete_handler
+from deleter.lib.search_videos import find_videos
+from deleter.lib.file_size import find_size
+from deleter.lib.older_by import find_older,sort_pairs_by_date,create_pairs
+from deleter.lib.delete_handler import find_free_space,delete_handler
+from delvideo import VIDEO_DIR
 
-#_PATH = os.getcwd()
-_PATH = '/home/_VideoArchive'
+
 #bite
 ratio = 1000000000
 #basic file weigth file in directory
@@ -14,10 +14,10 @@ middle_file = 40*ratio
 
 
 
-def main():
+def deleter_main():
     #each func must me for single and call with map)
     #return list
-    videos = find_videos(_PATH)
+    videos = find_videos(VIDEO_DIR)
     #return list
     files_by_hour = map(find_size,videos)
     total_by_hour = (sum(filter(None,files_by_hour)))
@@ -30,13 +30,12 @@ def main():
     older_files_by_date =filter(None, map(create_pairs,older_files))
     #create list with most older files
     files_for_delete = sort_pairs_by_date(older_files_by_date)
-    free_space = find_free_space()
+    #print(list(older_files_by_date))
+    free_space = find_free_space(VIDEO_DIR)
     print('free is' + str(free_space/ratio)+'gb')
     #default free_space is 0 for delete all
     #func take inside list with files
 
-    delete_handler(older_files_by_date,limit_for_delete,middle_file,ratio)
-        
+    delete_handler(files_for_delete,limit_for_delete,middle_file,ratio,VIDEO_DIR)
 
-if __name__ == "__main__":
-    main()
+
