@@ -1,4 +1,4 @@
-import os
+mport os
 from deleter.lib.search_videos import find_videos
 from deleter.lib.file_size import find_size
 from deleter.lib.older_by import find_older,sort_pairs_by_date,create_pairs
@@ -37,5 +37,3 @@ def deleter_main():
     #func take inside list with files
 
     delete_handler(files_for_delete,limit_for_delete,middle_file,ratio,VIDEO_DIR)
-
-
